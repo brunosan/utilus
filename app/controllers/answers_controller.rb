@@ -2,7 +2,8 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.xml
   def index
-    @answers = Answer.all
+    @answers = Answer.paginate(:page => params[:page])
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,8 +45,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to(@answer, :notice => 'Answer was successfully created.') }
-        format.xml  { render :xml => @answer, :status => :created, :location => @answer }
+        format.html { redirect_to(@answer.question, :notice => 'Answer was successfully created.') }
+        format.xml  { render :xml => @answer.question, :status => :created, :location => @answer }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @answer.errors, :status => :unprocessable_entity }

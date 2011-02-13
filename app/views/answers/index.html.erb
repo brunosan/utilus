@@ -1,27 +1,20 @@
 <h1>Listing answers</h1>
 
+<%= page_entries_info @answers %><%= will_paginate %>
 <table>
-  <tr>
-    <th>Text</th>
-    <th>Question</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @answers.each do |answer| %>
   <tr>
-    <td><%= answer.text %></td>
-    <td><%= answer.question_id %></td>
-    <td><%= answer.user_id %></td>
-    <td><%= link_to 'Show', answer %></td>
-    <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-    <td><%= link_to 'Destroy', answer, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <td><strong><%= answer.question.title %></strong>
+    </br>
+    <%=answer.text %> </br>[<%= time_ago_in_words(answer.updated_at) %> ago.] </td>
+
+  <td> <%= link_to 'x', answer, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
 <% end %>
 </table>
 
+<%= will_paginate %>
 <br />
 
 <%= link_to 'New Answer', new_answer_path %>
