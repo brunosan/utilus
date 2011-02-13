@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
-    @questions = Question.all
+    @questions = Question.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
-
+    @feed=@question.answers
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }

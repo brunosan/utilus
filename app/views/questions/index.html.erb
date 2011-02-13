@@ -1,26 +1,24 @@
 <h1>Listing questions</h1>
 
+<%= page_entries_info @questions %> <%= will_paginate %>
 <table>
   <tr>
     <th>Title</th>
-    <th>Type</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
+    <th>Answers</th>
+    <th>Sent</th>
     <th></th>
   </tr>
 
 <% @questions.each do |question| %>
   <tr>
-    <td><%= question.title %></td>
-    <td><%= question.type %></td>
-    <td><%= question.user_id %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to truncate(question.title,:lenth =>75,:separator =>'...'), question %></td>
+    <td><%= question.answers.count %></td>
+    <td><%= time_ago_in_words(question.updated_at) %> ago</td>
     <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+<%= will_paginate %>
 
 <br />
 

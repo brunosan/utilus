@@ -1,20 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
-  <%= @question.title %>
+<h3><%= @question.title %></h3>
 </p>
 
 <p>
-  <b>Type:</b>
-  <%= @question.type %>
+  Asked <%= time_ago_in_words(@question.updated_at) %> ago.
 </p>
+  <% unless @feed.empty? %>
+    <%=pluralize(@feed.count, "answer") %> so far:
+    <table>
+      <%= render "shared/feed"  %>
+    </table>
+  <%else %>
+    This question has no anwsers no far.
+  <%end %>
 
-<p>
-  <b>User:</b>
-  <%= @question.user_id %>
-</p>
 
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
