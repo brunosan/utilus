@@ -6,6 +6,7 @@
     <th>Title</th>
     <th>Answers</th>
     <th>Sent</th>
+    <th>Votes</th>
     <th></th>
   </tr>
 
@@ -14,7 +15,8 @@
     <td><%= link_to truncate(question.title,:lenth =>75,:separator =>'...'), question %></td>
     <td><%= question.answers.count %></td>
     <td><%= time_ago_in_words(question.updated_at) %> ago</td>
-    <td><%= link_to 'Destroy', question, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= question.votes %></td>
+    <td><%= link_to 'x', question, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

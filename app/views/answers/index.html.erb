@@ -7,7 +7,7 @@
   <tr>
     <td><strong><%= answer.question.title %></strong>
     </br>
-    <%=answer.text %> </br>[<%= time_ago_in_words(answer.updated_at) %> ago.] </td>
+    <%=answer.text %> </br><%= "[#{pluralize(answer.votes,"votes")}, posted #{time_ago_in_words(answer.created_at)} ago.]" %> </td>
 
   <td> <%= link_to 'x', answer, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>

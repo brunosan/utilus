@@ -81,4 +81,9 @@ class AnswersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def vote
+    redirect_to(anwsers.question)
+  end
+
 end
