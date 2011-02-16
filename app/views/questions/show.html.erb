@@ -9,7 +9,10 @@
   <% unless @feed.empty? %>
     <%=pluralize(@feed.count, "answer") %> so far:
     <table>
-      <%= render "shared/feed"  %>
+      <th></th>
+      <th>Votes</th>
+      <th>Flags</th>
+      <%= render "feed"  %>
     </table>
   <%else %>
     Hold tight, this question has no anwsers <strong>yet</strong>.

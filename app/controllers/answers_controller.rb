@@ -43,15 +43,11 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(params[:answer])
 
-    respond_to do |format|
       if @answer.save
-        format.html { redirect_to(@answer.question, :notice => 'Answer was successfully created.') }
-        format.xml  { render :xml => @answer.question, :status => :created, :location => @answer }
+        redirect_to(@answer.question, :notice => "Answer #{@answer.id} created. Here´s another question.")
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @answer.errors, :status => :unprocessable_entity }
+        redirect_to root_path
       end
-    end
   end
 
   # PUT /answers/1
@@ -77,13 +73,10 @@ class AnswersController < ApplicationController
     @answer.destroy
 
     respond_to do |format|
-      format.html { redirect_to(answers_url) }
+      format.html { redirect_to(answer.question) }
       format.xml  { head :ok }
     end
   end
 
-  def vote
-    redirect_to(anwsers.question)
-  end
 
 end

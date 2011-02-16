@@ -6,16 +6,15 @@
     <th>Title</th>
     <th>Answers</th>
     <th>Sent</th>
-    <th>Votes</th>
     <th></th>
   </tr>
 
-<% @questions.each do |question| %>
+  <% @questions.each do |question| %>
+
   <tr>
     <td><%= link_to truncate(question.title,:lenth =>75,:separator =>'...'), question %></td>
     <td><%= question.answers.count %></td>
     <td><%= time_ago_in_words(question.updated_at) %> ago</td>
-    <td><%= question.votes %></td>
     <td><%= link_to 'x', question, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

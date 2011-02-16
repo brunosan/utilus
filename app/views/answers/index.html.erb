@@ -3,11 +3,11 @@
 <%= page_entries_info @answers %><%= will_paginate %>
 <table>
 
-<% @answers.each do |answer| %>
+  <% @answers.each do |answer| %>
   <tr>
-    <td><strong><%= answer.question.title %></strong>
+    <td><strong><%= link_to answer.question.title, answer.question%></strong>
     </br>
-    <%=answer.text %> </br><%= "[#{pluralize(answer.votes,"votes")}, posted #{time_ago_in_words(answer.created_at)} ago.]" %> </td>
+    <%=answer.text %> </br><%= "[#{pluralize(answer.votes.count,"votes")} and #{pluralize(answer.flags.count,"flags")}. Added #{time_ago_in_words(answer.created_at)} ago.]" %> </td>
 
   <td> <%= link_to 'x', answer, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
@@ -17,4 +17,3 @@
 <%= will_paginate %>
 <br />
 
-<%= link_to 'New Answer', new_answer_path %>

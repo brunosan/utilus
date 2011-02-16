@@ -1,4 +1,6 @@
 Utilus::Application.routes.draw do
+  resources :flags
+
   root :to => 'pages#home'
 
   get "pages/home"
@@ -10,7 +12,9 @@ Utilus::Application.routes.draw do
   resources :votes
  
   resources :questions
-  resources :answers
+  resources :answers do 
+    resources :votes
+  end
  
 
   # The priority is based upon order of creation:
