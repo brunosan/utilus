@@ -7,9 +7,9 @@
   <tr>
     <td><strong><%= link_to answer.question.title, answer.question%></strong>
     </br>
-    <%=answer.text %> </br><%= "[#{pluralize(answer.votes.count,"votes")} and #{pluralize(answer.flags.count,"flags")}. Added #{time_ago_in_words(answer.created_at)} ago.]" %> </td>
+    <%=answer.text %> </br><%= "[#{pluralize(v=answer.votes.count,"votes")} and #{pluralize(f=answer.flags.count,"flags")}. Added #{time_ago_in_words(answer.created_at)} ago.]" %> </td>
 
-  <td> <%= link_to 'x', answer, :confirm => 'Are you sure?', :method => :delete %></td>
+  <td> <%= link_to 'x', answer, :confirm => 'Answer has more flags than votes. Delete?', :method => :delete if f>v%></td>
     </tr>
 <% end %>
 </table>

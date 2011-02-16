@@ -13,9 +13,9 @@
 
   <tr>
     <td><%= link_to truncate(question.title,:lenth =>75,:separator =>'...'), question %></td>
-    <td><%= question.answers.count %></td>
+    <td><%= a=question.answers.count %></td>
     <td><%= time_ago_in_words(question.updated_at) %> ago</td>
-    <td><%= link_to 'x', question, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'x', question, :confirm => 'Deleting question without answer. Are you sure?', :method => :delete if a == 0%></td>
   </tr>
 <% end %>
 </table>
