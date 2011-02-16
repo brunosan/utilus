@@ -15,6 +15,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @feed=@question.answers
+    @answer=Answer.new(:question => @question)
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @question }
