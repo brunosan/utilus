@@ -1,0 +1,24 @@
+<%= form_for(@answer) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <tr>
+    <td>
+      <%= f.text_field :text, :value => "Add your short answer." %>
+    </td>
+    <td>
+    <%= f.hidden_field :question_id, :value=>@question.id %>
+    <%= f.submit %>
+    </td>
+  </tr>
+
+<% end %>

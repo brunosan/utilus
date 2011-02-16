@@ -1,0 +1,20 @@
+<h1>Listing offensive answers</h1>
+
+<%= page_entries_info @flags %><%= will_paginate %>
+
+<table>
+
+<% @flags.each do |flag| %>
+  <tr>
+    <td>
+      <%= time_ago_in_words(flag.created_at) %> ago.</br>
+      <strong>Question:</strong> <%=link_to flag.answer.question.title, flag.answer.question %> </br>
+      <strong>Answer:</strong> <%= flag.answer.text%> </br>
+    </td>
+    <td><%= link_to 'Delete flag', flag, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

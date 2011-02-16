@@ -1,0 +1,14 @@
+<h3>Here is what you can do</h3>
+
+<p>
+
+<ul>
+
+  <li>We´ve got <%= link_to pluralize(Question.count, "question"), questions_path %>.
+  <li>Add a <%= link_to "question", new_question_path %>.
+  <li>Go <%= link_to "answer", root_path %> some random question.
+  <li>We´ve got <%= link_to pluralize(Answer.count, "answer") , answers_path %>.
+  <li>We´ve got <%= link_to pluralize(Vote.count, "vote") , votes_path %> to answers.
+  <li>We´ve got <%= link_to pluralize(Flag.count, "report") , flags_path %> of potentially offensive answers.
+
+</ul>

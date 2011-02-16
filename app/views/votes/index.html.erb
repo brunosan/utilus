@@ -1,0 +1,21 @@
+<h1>Listing votes</h1>
+
+<%= page_entries_info @votes %><%= will_paginate %>
+
+<table>
+
+<% @votes.each do |vote| %>
+  <tr>
+    <td>
+      <%= time_ago_in_words(vote.created_at) %> ago.</br>
+      <strong>Question:</strong> <%=link_to vote.answer.question.title, vote.answer.question %> </br>
+      <strong>Answer:</strong> <%= vote.answer.text%> </br>
+    </td>
+    <td><%= link_to 'Destroy', vote, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
