@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
-    total_questions=Question.count
-    @question=Question.find(rand(total_questions-1)+1)
+    offset=rand(Question.count)
+    @question=Question.first(:offset => offset)
     @feed=@question.answers
     @answer=Answer.new(:question => @question)
 
