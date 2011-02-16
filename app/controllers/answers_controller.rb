@@ -44,7 +44,7 @@ class AnswersController < ApplicationController
     @answer = Answer.new(params[:answer])
 
       if @answer.save
-        redirect_to(@answer.question, :notice => "Answer #{@answer.id} created. Here´s another question.")
+        redirect_to( root_path, :notice => "Answer #{@answer.id} created. Here´s another question.")
       else
         redirect_to root_path
       end
