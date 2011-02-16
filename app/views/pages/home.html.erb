@@ -1,19 +1,22 @@
 Ask <strong>short</strong> <%= link_to "questions", questions_path %>.
 Get <strong>short</strong> <%= link_to "answers", answers_path %>.
 <p>
+<br/>
+<%= link_to "Skip question", root_path %>
 <h2><%= @question.title %></h2>
-
+<br/>
 <% unless @feed.empty? %>
 Vote the answer you like most:  
-  <table class="question" summary="Randmom question">
+<table class="question" summary="Randmom question">
   <tr>
-    <%= render "feed"  %>
+    <%= render "shared/feed"  %>
   </tr>
   </table>
+  ... or have your saying.
 <%else %>
   This question has no anwsers no far.
+  Why don´t you add one?
 <%end %>
-  ... or have your saying.
 <table class="question">
     <tr>
       <%= render "shared/answer_form" %>

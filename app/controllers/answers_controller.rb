@@ -42,9 +42,8 @@ class AnswersController < ApplicationController
   # POST /answers.xml
   def create
     @answer = Answer.new(params[:answer])
-
       if @answer.save
-        redirect_to( root_path, :notice => "Answer #{@answer.id} created. Here´s another question.")
+        redirect_to( root_path, :notice => "Answer #{Answer.count} created. Here´s another question.")
       else
         redirect_to root_path
       end
@@ -73,7 +72,7 @@ class AnswersController < ApplicationController
     @answer.destroy
 
     respond_to do |format|
-      format.html { redirect_to(answer.question) }
+      format.html { redirect_to root_path, :notice => "Answer deleted. Hopefully that´s what we want." }
       format.xml  { head :ok }
     end
   end

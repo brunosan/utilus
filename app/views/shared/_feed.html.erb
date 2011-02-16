@@ -1,0 +1,19 @@
+<% @feed.each do |answer| %> 
+<tr>
+  <td class="anwser">
+      <%= answer.text %>
+    </td>
+    <% v=answer.votes.count %>
+    <% f=answer.flags.count %>
+    <td><%=pluralize(v,"votes")%> <%= button_to "Add 1 vote", {:controller => "votes", :action => "create", :answer_id => answer.id}%></td>
+    <td><%=pluralize(f,"flags")%>
+      <% if f-1 < v  %>
+        <%= button_to "Flag", {:controller => "flags", :action => "create", :answer_id => answer.id} ,
+            :confirm => "You are reporting this as offensive. Sure?"%></td>
+        <%else %>
+          </br><%= link_to "Delete?", answer, :method => :delete, :confirm => "This answer has more flags than votes. Delete answer?"%></td>
+        <% end %>
+
+</tr>
+
+<% end %>

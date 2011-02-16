@@ -1,8 +1,11 @@
 class Answer < ActiveRecord::Base
 
   belongs_to :question
-  has_many :votes
-  has_many :flags
+  
+
+  has_many :votes, :dependent => :destroy
+  has_many :flags, :dependent => :destroy
+
   validates :text, :presence => true,
                   :length => {:within => 1..130}
   validates_exclusion_of :text, :in => %w(answer), :message => "Write something"
