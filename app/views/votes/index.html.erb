@@ -7,11 +7,12 @@
 <% @votes.each do |vote| %>
   <tr>
     <td>
-      <%= time_ago_in_words(vote.created_at) %> ago.</br>
-      <strong>Question:</strong> <%=link_to vote.answer.question.title, vote.answer.question %> </br>
-      <strong>Answer:</strong> <%= vote.answer.text%> </br>
+    Voted <%= time_ago_in_words(vote.created_at) %>  ago.</br>
     </td>
-    <td><%= link_to 'Destroy', vote, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <strong>Question:</strong> <%=link_to vote.answer.question.title, vote.answer.question %> (<%= pluralize(vote.answer.question.answers.count,"answer")%> total) </br>
+      <strong>Answer:</strong> <%= vote.answer.text%> ( <%= pluralize(vote.answer.votes.count,"vote")%>/ <%= pluralize(vote.answer.flags.count,"flag")%> )</br>
+    </td>
   </tr>
 <% end %>
 </table>

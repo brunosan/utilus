@@ -7,14 +7,17 @@
 <% @flags.each do |flag| %>
   <tr>
     <td>
-      <%= time_ago_in_words(flag.created_at) %> ago.</br>
-      <strong>Question:</strong> <%=link_to flag.answer.question.title, flag.answer.question %> </br>
-      <strong>Answer:</strong> <%= flag.answer.text%> </br>
+    Flaged <%= time_ago_in_words(flag.created_at) %>  ago.</br>
     </td>
-    <td><%= link_to 'Delete flag', flag, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <strong>Question:</strong> <%=link_to flag.answer.question.title, flag.answer.question %> (<%= pluralize(flag.answer.question.answers.count,"answer")%> total) </br>
+      <strong>Answer:</strong> <%= flag.answer.text%> ( <%= pluralize(flag.answer.votes.count,"vote")%>/ <%= pluralize(flag.answer.flags.count,"flag")%> )</br>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
+
+
 
