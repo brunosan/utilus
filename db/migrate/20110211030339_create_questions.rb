@@ -2,8 +2,6 @@ class CreateQuestions < ActiveRecord::Migration
   def self.up
     create_table :questions do |t|
       t.string :title
-      t.integer :type
-      t.integer :user_id
 
       t.timestamps
     end
